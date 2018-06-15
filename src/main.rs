@@ -1,11 +1,10 @@
-#[macro_use]
-extern crate clap;
+extern crate lipsum_rs;
 
-mod app;
+use lipsum_rs::app;
 
 fn main() {
-    let app = app::build_cli();
-    let m = app.get_matches();
+    let m = app::build_cli().get_matches();
+
     println!("Hello, world!");
     println!("{:?}", m);
 }
