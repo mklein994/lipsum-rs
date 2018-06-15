@@ -4,8 +4,9 @@ extern crate lipsum;
 
 pub mod app;
 
-use lipsum::lipsum;
+pub use lipsum::lipsum;
 
-fn do_something() {
-    println!("did stuff");
+/// Generate 'count' number words.
+pub fn generate_words(count: usize) {
+    println!("{}", lipsum(count));
 }

@@ -11,10 +11,10 @@ pub fn build_cli() -> App<'static, 'static> {
                 .short("t"),
         )
         .arg(
-            Arg::with_name("paragraph")
-                .help("Number of paragraphs to generate")
-                .long("paragraph")
+            Arg::with_name("words")
+                .help("Number of words to generate")
+                .long("words")
                 .number_of_values(1)
-                .short("p"),
+                .short("w"),
         )
 }
