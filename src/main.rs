@@ -10,6 +10,6 @@ fn main() {
 
     if m.is_present("words") {
         let count = value_t!(m.value_of("words"), usize).unwrap();
-        generate_words(count);
+        println!("{}", generate_words(count));
     }
 }
