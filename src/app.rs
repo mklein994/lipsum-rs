@@ -7,6 +7,7 @@ pub fn build_cli() -> App<'static, 'static> {
             Arg::with_name("title")
                 .help("Generate a title")
                 .long("title")
+                .conflicts_with("paragraph")
                 .short("t"),
         )
         .arg(
