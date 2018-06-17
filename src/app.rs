@@ -7,14 +7,14 @@ pub fn build_cli() -> App<'static, 'static> {
             Arg::with_name("title")
                 .help("Generate a title")
                 .long("title")
-                .conflicts_with("paragraph")
+                .conflicts_with("words")
                 .short("t"),
         )
         .arg(
             Arg::with_name("words")
                 .help("Number of words to generate")
-                .long("words")
-                .number_of_values(1)
-                .short("w"),
+                .index(1)
+                .default_value("10")
+                .number_of_values(1),
         )
 }

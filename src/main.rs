@@ -1,15 +1,17 @@
 extern crate lipsum_rs;
 #[macro_use]
 extern crate clap;
+extern crate lipsum;
 
 use lipsum_rs::app;
-use lipsum_rs::generate_words;
 
 fn main() {
     let m = app::build_cli().get_matches();
 
-    if m.is_present("words") {
+    if m.is_present("title") {
+        println!("{}", lipsum::lipsum_title());
+    } else if m.is_present("words") {
         let count = value_t!(m.value_of("words"), usize).unwrap();
-        println!("{}", generate_words(count));
+        println!("{}", lipsum::lipsum(count));
     }
 }
