@@ -10,7 +10,7 @@ fn main() {
 
     if m.is_present("title") {
         println!("{}", lipsum::lipsum_title());
-    } else if m.is_present("words") {
+    } else {
         let count = value_t!(m.value_of("words"), usize).unwrap();
         println!("{}", lipsum::lipsum(count));
     }
