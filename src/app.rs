@@ -17,4 +17,11 @@ pub fn build_cli() -> App<'static, 'static> {
                 .default_value("10")
                 .number_of_values(1),
         )
+        .arg(
+            Arg::with_name("paragraphs")
+                .help("Number of paragraphs to generate")
+                .long("paragraphs")
+                .short("p")
+                .takes_value(true),
+        )
 }
