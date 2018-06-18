@@ -26,6 +26,7 @@ mod tests {
         const N: usize = 10;
         let actual = get_paragraphs(N);
         let lines = actual.lines();
-        assert_eq!(N, lines.count());
+        // Exclude the empty lines
+        assert_eq!(N, lines.count() / 2);
     }
 }
