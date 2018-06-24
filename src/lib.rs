@@ -11,7 +11,7 @@ pub fn get_paragraphs(count: usize) -> String {
     let mut p: String = String::new();
     let mut rng = rand::thread_rng();
     for _ in 0..count {
-        let word_count = Range::new(20, 100).ind_sample(&mut rng);
+        let word_count = Range::new(100, 200).ind_sample(&mut rng);
         p.push_str(&format!("{}\n\n", lipsum::lipsum(word_count)));
     }
     p
