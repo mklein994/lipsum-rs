@@ -5,30 +5,31 @@ extern crate rand;
 
 use rand::distributions::{Distribution, Uniform};
 
+/// Define the command line arguments.
 pub mod app;
 
-pub fn get_paragraphs(count: usize) -> String {
-    let mut p: String = String::new();
+/// Print a title.
+pub fn title() {
+    println!("{}", lipsum::lipsum_title());
+}
+
+/// Print `count` number of words.
+pub fn words(count: usize) {
+    println!("{}", lipsum::lipsum(count));
+}
+
+/// Print `count` number of paragraphs with 100 to 200 words each.
+pub fn paragraphs(count: usize) {
     let mut rng = rand::thread_rng();
     let between = Uniform::from(100..200);
 
-    for _ in 0..count {
+    for i in 0..count {
         let word_count = between.sample(&mut rng);
-        p.push_str(&format!("{}\n\n", lipsum::lipsum(word_count)));
-    }
-    p
-}
+        println!("{}", lipsum::lipsum(word_count));
 
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn get_10_paragraphs() {
-        const N: usize = 10;
-        let actual = get_paragraphs(N);
-        let lines = actual.lines();
-        // Exclude the empty lines
-        assert_eq!(N, lines.count() / 2);
+        // don't print a trailing newline if this is the last paragraph.
+        if i < count - 1 {
+            println!();
+        }
     }
 }

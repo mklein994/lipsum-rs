@@ -7,21 +7,23 @@ pub fn build_cli() -> App<'static, 'static> {
             Arg::with_name("title")
                 .help("Generate a title")
                 .long("title")
-                .conflicts_with("words")
                 .short("t"),
         )
         .arg(
             Arg::with_name("words")
+                .default_value("150")
                 .help("Number of words to generate")
-                .index(1)
-                .default_value("10")
-                .number_of_values(1),
+                .long("words")
+                .number_of_values(1)
+                .short("w"),
         )
         .arg(
             Arg::with_name("paragraphs")
+                .conflicts_with("words")
                 .help("Number of paragraphs to generate")
                 .long("paragraphs")
                 .short("p")
-                .takes_value(true),
+                .min_values(0)
+                .max_values(1),
         )
 }
