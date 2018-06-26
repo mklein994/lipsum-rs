@@ -10,6 +10,11 @@ fn run() -> Result<(), Box<std::error::Error>> {
 
     if m.is_present("title") {
         println!("{}", lipsum::lipsum_title());
+
+        // If there are more orguments, or if `-w` was passed, add a newline after the title.
+        if m.args.len() > 2 || m.occurrences_of("words") == 1 {
+            println!();
+        }
     }
 
     if m.is_present("paragraphs") {
