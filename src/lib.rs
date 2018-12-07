@@ -6,9 +6,7 @@ use rand::distributions::{Distribution, Uniform};
 /// Define the command line arguments.
 pub mod app;
 
-pub fn run() -> Result<(), Box<dyn std::error::Error>> {
-    let m = app::build_cli().get_matches();
-
+pub fn run(m: clap::ArgMatches<'_>) -> Result<(), Box<dyn std::error::Error>> {
     if m.is_present("title") {
         println!("{}", lipsum::lipsum_title());
 
